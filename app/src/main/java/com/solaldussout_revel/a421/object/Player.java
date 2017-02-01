@@ -79,30 +79,39 @@ public class Player {
 
 
     //Rajoute un object score
-    public void addScore(String lib, float valueBase, int coSquall){
+    public void addScore(String lib, float valueBase, boolean activeSquall, int coSquall){
         Score[] preScores = this.getScores();
-        Score[] newScores = new Score[preScores.length];
-
-
-        Integer selfSquall = this.manageSelfSquall(valueBase);
-        Score newScore = new Score(lib, valueBase, selfSquall, coSquall);
-
-
-        for(int i = 0; i < preScores.length ; i++){
-            newScores[i]=preScores[i];
+        Score[] newScores;
+        if(preScores == null){
+            newScores = new Score[1];
+        } else {
+            newScores = new Score[preScores.length+1];
         }
-        newScores[preScores.length] = newScore;
+
+
+        Integer selfSquall = this.manageSelfSquall(lib);
+        Score newScore = new Score(lib, valueBase, selfSquall, coSquall, activeSquall);
+
+        if(preScores != null){
+            for(int i = 0; i < preScores.length ; i++){
+                newScores[i]=preScores[i];
+            }
+            newScores[preScores.length] = newScore;
+        } else {
+            newScores[0] = newScore;
+        }
+
         this.setScores(newScores);
     }
 
 
     //Gère la réinitialisation ou l'incrémentation.
-    private Integer manageSelfSquall(float valueBase){
+    private Integer manageSelfSquall(String lib){
         Integer cur = this.getSelfSquall();
-        if(valueBase > 0){
-            this.setSelfSquall(cur+1);
-        } else {
+        if(lib.equals("Slash")){
             this.setSelfSquall(0);
+        } else {
+            this.setSelfSquall(cur+1);
         }
         return this.getSelfSquall();
     }

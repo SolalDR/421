@@ -18,7 +18,6 @@ public class Game {
     public Game(){
         this.setCoSquall(0);
         this.setPaused(true);
-        this.setPlayers(new Player[1]);
         this.setCurrentTour(0);
         this.setCurrentPlayer(0);
         this.setCombinaisons();
@@ -83,11 +82,11 @@ public class Game {
                 new Combinaison("Nenette", (float) 0, false),
                 new Combinaison("KT1", (float) 1, false),
                 new Combinaison("Koala", (float) -1, false),
-                new Combinaison("MQR", (float) 9, true),
-                new Combinaison("Guinguette", (float) 9, true),
-                new Combinaison("Colombette", (float) 9, true),
-                new Combinaison("Punk", (float) 9, true),
-                new Combinaison("Molotov", (float) 9, true)
+                new Combinaison("MQR", (float) 6, true),
+                new Combinaison("Guinguette", (float) 6, true),
+                new Combinaison("Colombette", (float) 4, true),
+                new Combinaison("Punk", (float) 3, true),
+                new Combinaison("Molotov", (float) 6, true)
         };
 
 
@@ -102,6 +101,7 @@ public class Game {
     public Combinaison[] getCombinaisons() {
         return combinaisons;
     }
+
 
     public Combinaison getCombinaison(Integer id){
 /*        for(int i=0; i<this.combinaisons.length; i++){
@@ -120,19 +120,27 @@ public class Game {
 
     public Player addPlayer(String name){
         Player[] players = this.getPlayers();
-        Player[] newPlayers = new Player[players.length];
+        Player[] newPlayers;
         Player newPlayer = new Player(name);
 
 
-        if(players.length == 1 && players[0]==null){
-            players[0] = newPlayer;
+        if(players != null){
+            newPlayers = new Player[players.length+1];
+        } else {
+            newPlayers = new Player[1];
+        }
+
+
+        if(players == null){
+            newPlayers[0] = newPlayer;
         } else {
             for(int i=0; i<players.length; i++){
                 newPlayers[i] = players[i];
             }
-            newPlayers[players.length-1] = newPlayer;
-            this.setPlayers(newPlayers);
+            newPlayers[players.length] = newPlayer;
         }
+
+        this.setPlayers(newPlayers);
         return newPlayer;
     }
 
@@ -145,22 +153,23 @@ public class Game {
 
     //Passe au joueurs suivant et le renvoi
     public Player nextPlayer(){
-        Integer cur = this.getCurrentPlayer();
-        cur+=1;
+        Integer next = this.getCurrentPlayer()+1;
+        Player[] players = this.getPlayers();
 
-        Player curPlayer = this.getPlayers()[cur];
-        if(curPlayer == null){
+
+
+        if(players.length == next){
             this.setCurrentPlayer(0);
             this.setCurrentTour(this.getCurrentTour()+1);
-            return this.getPlayers()[0];
+            return players[0];
         } else {
-            this.setCurrentPlayer(cur);
-            return curPlayer;
+            this.setCurrentPlayer(next);
+            return players[next];
         }
     }
     public Integer getTrueSquall(){
         Integer coSquallValue = this.getCoSquall();
-        Integer result = coSquallValue-3>0 ? coSquallValue-3 : 0;
-        return result;
+        Integer trueSquall = coSquallValue-3>0 ? coSquallValue-3 : 0;
+        return trueSquall;
     }
 }

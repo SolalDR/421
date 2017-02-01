@@ -10,11 +10,13 @@ public class Score {
     private Float total;
     private Integer selfSquall;
     private Integer coSquall;
+    private Boolean activeSquall;
 
-    public Score(String lib, float valueBase, int selfSquall, int coSquall){
+    public Score(String lib, float valueBase, int selfSquall, int coSquall, boolean activeSquall){
         this.setSelfSquall(selfSquall);
         this.setCoSquall(coSquall);
         this.setValueBase(valueBase);
+        this.setActiveSquall(activeSquall);
         this.setLib(lib);
         this.calcTotal();
     }
@@ -59,8 +61,17 @@ public class Score {
         this.coSquall = coSquall;
     }
 
+    public Boolean getActiveSquall() {
+        return activeSquall;
+    }
+
+    public void setActiveSquall(Boolean activeSquall) {
+        this.activeSquall = activeSquall;
+    }
+
 
     public void calcTotal(){
+        Float totalValue;
         Float b = this.getValueBase();
         Float s = Float.valueOf(this.getSelfSquall());
         Float c = Float.valueOf(this.getCoSquall());
@@ -68,9 +79,13 @@ public class Score {
         Float sResult = s-3 > 0 ? s-3 : 0;
         Float cResult = c-3 > 0 ? c-3 : 0;
 
-        Float total = b + sResult + cResult;
+        if(this.getActiveSquall()){
+            totalValue = b + sResult + cResult;
+        } else {
+            totalValue = b;
+        }
 
-        this.setTotal(total);
+        this.setTotal(totalValue);
     }
 
 }
