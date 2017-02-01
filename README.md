@@ -90,10 +90,10 @@ Il est constitué de plusieurs éléments renvoyant à des actions
 
 ##Informations complémentaire 
 ####Charte graphique : 
-- #333c4a
-- #495664
-- #f6f7d3
-- #f8fceb
+<img src="chart.png" width="100" style="float:right">
+\#333c4a |  #495664  |  #f6f7d3   |   #f8fceb
+
+
 
 ##TO DO
 - Définir des styles pour les éléments récurrents tels que les boutons, les titres d'activité, les labels simple, les layout de background
