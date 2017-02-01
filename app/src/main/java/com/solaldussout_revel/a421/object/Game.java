@@ -9,6 +9,9 @@ public class Game {
     private Integer currentPlayer;
     private Integer currentTour;
     private Boolean isPaused;
+
+    private Combinaison[] combinaisons;
+    private String[] combinaisonsLib;
     private Player players[];
 
 
@@ -18,6 +21,7 @@ public class Game {
         this.setPlayers(new Player[1]);
         this.setCurrentTour(0);
         this.setCurrentPlayer(0);
+        this.setCombinaisons();
     }
 
     public void start(){
@@ -66,6 +70,50 @@ public class Game {
 
     public void setCurrentTour(Integer currentTour) {
         this.currentTour = currentTour;
+    }
+
+    public void setCombinaisons(){
+        this.combinaisons = new Combinaison[]{
+                new Combinaison("421", (float) 9, true),
+                new Combinaison("Slash", (float) 0, false),
+                new Combinaison("111", (float) 6, true),
+                new Combinaison("Iniakin", (float) 6, true),
+                new Combinaison("Sphinx", (float) 5, true),
+                new Combinaison("Eddy Malou", (float) 1.5, true),
+                new Combinaison("Nenette", (float) 0, false),
+                new Combinaison("KT1", (float) 1, false),
+                new Combinaison("Koala", (float) -1, false),
+                new Combinaison("MQR", (float) 9, true),
+                new Combinaison("Guinguette", (float) 9, true),
+                new Combinaison("Colombette", (float) 9, true),
+                new Combinaison("Punk", (float) 9, true),
+                new Combinaison("Molotov", (float) 9, true)
+        };
+
+
+        this.combinaisonsLib = new String[this.combinaisons.length];
+        System.out.println(this.combinaisonsLib.length);
+        for(int i=0; i<this.combinaisons.length; i++){
+            System.out.println(this.combinaisons[i].getLib());
+            this.combinaisonsLib[i] = this.combinaisons[i].getLib();
+        }
+    }
+
+    public Combinaison[] getCombinaisons() {
+        return combinaisons;
+    }
+
+    public Combinaison getCombinaison(Integer id){
+/*        for(int i=0; i<this.combinaisons.length; i++){
+            if(this.combinaisons[i].getLib()==lib){
+                return this.combinaisons[i];
+            }
+        }*/
+        return this.combinaisons[id];
+    }
+
+    public String[] getCombinaisonsLib(){
+        return this.combinaisonsLib;
     }
 
     //Functions
