@@ -42,23 +42,19 @@ public class ScoreActivity extends MenuParentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_score);
         this.initToolbar();
-
-
 
         this.game = MainActivity.getGame();
         this.player = game.getActualPlayer();
         this.setMqrOptions();
-
-
 
         //Get textview
         TextView selfSquallLabel = (TextView)findViewById(R.id.selfSquallLabel);
         TextView coSquallLabel = (TextView)findViewById(R.id.coSquallLabel);
         this.playerNameLabel = (TextView)findViewById(R.id.playerNameLabel);
         this.actualScoreLabel = (TextView)findViewById(R.id.actualScoreLabel);
-
 
         //Set textview
         String selfSquallText = "AB : "+this.player.getTrueSquall().toString();
@@ -68,8 +64,6 @@ public class ScoreActivity extends MenuParentActivity {
         coSquallLabel.setText(coSquallText);
         playerNameLabel.setText(this.player.getName());
 
-
-
         //Gestison de la grille
         String[] combinaisons = this.game.getCombinaisonsLib();
         GridView grid = (GridView)findViewById(R.id.gridViewTest);
@@ -78,8 +72,8 @@ public class ScoreActivity extends MenuParentActivity {
         grid.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapater, View view, int position, long id) {
-                // Que faire quand on clique sur un élément de la liste ?
 
+                // Que faire quand on clique sur un élément de la liste ?
                 Integer pos = position;
                 tmpCombin = game.getCombinaison(pos);
 

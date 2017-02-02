@@ -123,13 +123,11 @@ public class Game {
         Player[] newPlayers;
         Player newPlayer = new Player(name);
 
-
         if(players != null){
             newPlayers = new Player[players.length+1];
         } else {
             newPlayers = new Player[1];
         }
-
 
         if(players == null){
             newPlayers[0] = newPlayer;
@@ -155,8 +153,6 @@ public class Game {
     public Player nextPlayer(){
         Integer next = this.getCurrentPlayer()+1;
         Player[] players = this.getPlayers();
-
-
 
         if(players.length == next){
             this.setCurrentPlayer(0);

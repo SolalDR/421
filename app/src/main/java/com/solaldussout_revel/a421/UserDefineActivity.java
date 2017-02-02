@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.solaldussout_revel.a421.object.Game;
 import com.solaldussout_revel.a421.object.Player;
 
-public class UserDefineActivity extends AppCompatActivity {
+public class UserDefineActivity extends MenuParentActivity {
     Game game;
     Button saveUserButton;
     EditText[] users = new EditText[5];
@@ -27,6 +27,7 @@ public class UserDefineActivity extends AppCompatActivity {
         game = MainActivity.getGame();
 
         setContentView(R.layout.activity_user_define);
+        this.initToolbar();
 
         users[0] = (EditText) findViewById(R.id.userDefineField1);
         users[1] = (EditText) findViewById(R.id.userDefineField2);
