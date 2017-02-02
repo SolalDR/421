@@ -20,6 +20,7 @@
     <style name="AppTheme.mainButton"></style>
 
     <style name="AppTheme.activityTitle"></style>
+
     <style name="AppTheme.activityMention"></style>
 
 </resources>

@@ -5,9 +5,13 @@
         android:orderInCategory="101"
         android:title="@string/action_settings" />
     <item android:title="Précédent" />
-    <item android:title="Arrêter la partie" />
+    <item android:title="Arrêter la partie" android:id="@+id/stopGame" />
     <item
-        android:title="Overview"
+        android:title="Voir la grille"
         android:orderInCategory="102"
         android:id="@+id/overviewButton" />
+    <item
+        android:title="Retour à la partie"
+        android:orderInCategory="102"
+        android:id="@+id/scoreActivityButton" />
 </menu>

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button buttonStartGame = null;
 
-    private static Game game = new Game();
+    private static Game game;
     public static Game getGame() { return game; }
     public static void setGame(Game g) { game = g; }
 
@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener buttonStartListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
+
+            MainActivity.setGame(new Game());
             Intent secondeActivite = new Intent(MainActivity.this, UserDefineActivity.class);
             startActivity(secondeActivite);
         }
