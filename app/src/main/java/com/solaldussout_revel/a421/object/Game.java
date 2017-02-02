@@ -74,7 +74,7 @@ public class Game {
     public void setCombinaisons(){
         this.combinaisons = new Combinaison[]{
                 new Combinaison("421", (float) 9, true),
-                new Combinaison("Slash", (float) 0, false),
+                new Combinaison("Schlass", (float) 0, false),
                 new Combinaison("111", (float) 6, true),
                 new Combinaison("Iniakin", (float) 6, true),
                 new Combinaison("Sphinx", (float) 5, true),

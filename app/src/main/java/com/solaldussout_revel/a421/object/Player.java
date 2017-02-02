@@ -108,7 +108,7 @@ public class Player {
     //Gère la réinitialisation ou l'incrémentation.
     private Integer manageSelfSquall(String lib){
         Integer cur = this.getSelfSquall();
-        if(lib.equals("Slash")){
+        if(lib.equals("Schlass")){
             this.setSelfSquall(0);
         } else {
             this.setSelfSquall(cur+1);

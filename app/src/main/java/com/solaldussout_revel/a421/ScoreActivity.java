@@ -1,8 +1,6 @@
 package com.solaldussout_revel.a421;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.app.Dialog;
@@ -22,7 +20,7 @@ import com.solaldussout_revel.a421.object.Player;
 import java.util.ArrayList;
 
 
-public class ScoreActivity extends AppCompatActivity {
+public class ScoreActivity extends MenuParentActivity {
 
     private final static int SPINNER_IDENTIFIANT  = 0;
 
@@ -45,15 +43,15 @@ public class ScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        this.initToolbar();
+
 
 
         this.game = MainActivity.getGame();
         this.player = game.getActualPlayer();
         this.setMqrOptions();
 
-        setContentView(R.layout.activity_score);
+
 
         //Get textview
         TextView selfSquallLabel = (TextView)findViewById(R.id.selfSquallLabel);
@@ -165,17 +163,20 @@ public class ScoreActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Combinaison combin = tmpCombin;
-
-            if(combin.getLib() != null && combin.getValue() != null && combin.getActiveSquall() != null){
-                if(combin.getLib().equals("Slash")){
-                    game.setCoSquall(0);
-                } else {
-                    game.setCoSquall(game.getCoSquall()+1);
+            if(combin != null){
+                if(combin.getLib() != null && combin.getValue() != null && combin.getActiveSquall() != null){
+                    if(combin.getLib().equals("Schlass")){
+                        game.setCoSquall(0);
+                    } else {
+                        game.setCoSquall(game.getCoSquall()+1);
+                    }
+                    player.addScore(combin.getLib(), combin.getValue(), combin.getActiveSquall(), game.getCoSquall());
+                    game.nextPlayer();
+                    Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
+                    startActivity(secondeActivite);
                 }
-                player.addScore(combin.getLib(), combin.getValue(), combin.getActiveSquall(), game.getCoSquall());
-                game.nextPlayer();
-                Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
-                startActivity(secondeActivite);
+            } else {
+                //Alert l'utilisateur qu'il doit rentrer une combin
             }
         }
     };
