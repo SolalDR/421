@@ -183,7 +183,6 @@ public class ScoreActivity extends MenuParentActivity {
 
     private void setMqrOptions(){
         mqrOptions = new ArrayList<>();
-        mqrOptions.add("1");
         mqrOptions.add("2");
         mqrOptions.add("3");
         mqrOptions.add("4");
