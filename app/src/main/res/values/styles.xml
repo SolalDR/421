@@ -23,6 +23,15 @@
 
     <style name="AppTheme.activityMention"></style>
 
+    <style name="AppTheme.buttonNav">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
     <style name="AppTheme.layoutActivity">
         <item name="android:background">@color/secondDarkColor</item>
     </style>

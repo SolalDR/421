@@ -26,7 +26,6 @@ public abstract class MenuParentActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-
         MenuItem overviewButton = menu.findItem(R.id.overviewButton);
         MenuItem scoreActivityButton = menu.findItem(R.id.scoreActivityButton);
         MenuItem stopGameButton = menu.findItem(R.id.stopGame);

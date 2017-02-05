@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/firstDarkColor">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            app:srcCompat="@drawable/dice"
+            android:id="@+id/imageView2"
+            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:padding="10dp" />
+
+        <ImageButton
+            app:srcCompat="@drawable/eye_icon"
+            android:id="@+id/overviewButtonNav"
+            style="@style/AppTheme.buttonNav"/>
+
+        <ImageButton
+            app:srcCompat="@drawable/previous"
+            style="@style/AppTheme.buttonNav"
+            android:id="@+id/previousButtonNav" />
+
+        <ImageButton
+            app:srcCompat="@drawable/play_partie"
+            style="@style/AppTheme.buttonNav"
+            android:id="@+id/imageButton" />
+
+        <ImageButton
+            app:srcCompat="@drawable/warning"
+            style="@style/AppTheme.buttonNav"
+            android:id="@+id/warningButton" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.AppBarOverlay"
+            android:layout_gravity="right"
+            android:layout_width="50dp"
+            android:layout_weight="1"
+            windowActionBar="false" />
+    </LinearLayout>
+
+</android.support.design.widget.AppBarLayout>
+
