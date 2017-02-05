@@ -23,4 +23,15 @@
 
     <style name="AppTheme.activityMention"></style>
 
+    <style name="AppTheme.layoutActivity">
+        <item name="android:background">@color/secondDarkColor</item>
+    </style>
+
+    <style name="AppTheme.buttonLight">
+        <item name="android:background">@color/firstLightColor</item>
+        <item name="android:textColor">@color/firstDarkColor</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
 </resources>
