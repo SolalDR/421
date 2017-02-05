@@ -20,17 +20,34 @@
 
         <GridView
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="40dp"
             android:id="@+id/nameViewGrid" />
 
         <GridView
             android:layout_width="match_parent"
+            android:layout_below="@+id/nameViewGrid"
+            android:background="#CCCCCC"
+            android:id="@+id/totalViewGrid"
+            android:layout_height="20dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/scoreViewGrid"
-            android:paddingBottom="10dp" />
+            android:orientation="vertical"
+            android:baselineAligned="false"
+            android:minHeight="0dp"
+            android:isScrollContainer="true">
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/totalViewGrid"
+                android:id="@+id/scoreViewGrid"
+                android:paddingBottom="10dp" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>

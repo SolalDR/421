@@ -79,7 +79,7 @@ public class Player {
 
 
     //Rajoute un object score
-    public void addScore(String lib, float valueBase, boolean activeSquall, int coSquall){
+    public void addScore(String lib, float valueBase, boolean activeSquall, int coSquall, boolean firsttry){
         Score[] preScores = this.getScores();
         Score[] newScores;
         if(preScores == null){
@@ -90,7 +90,7 @@ public class Player {
 
 
         Integer selfSquall = this.manageSelfSquall(lib);
-        Score newScore = new Score(lib, valueBase, selfSquall, coSquall, activeSquall);
+        Score newScore = new Score(lib, valueBase, selfSquall, coSquall, activeSquall, firsttry);
 
         if(preScores != null){
             for(int i = 0; i < preScores.length ; i++){
@@ -133,9 +133,14 @@ public class Player {
     public Float calcTotal(){
         Score[] scores = this.getScores();
         Float total = Float.valueOf(0);
-        for(int i=0; i<scores.length ; i++){
-            total+=scores[i].getTotal();
+        if(scores!=null){
+            for(int i=0; i<scores.length ; i++){
+                total+=scores[i].getTotal();
+            }
+        } else {
+            total = Float.valueOf(0);
         }
+
         return total;
     }
 

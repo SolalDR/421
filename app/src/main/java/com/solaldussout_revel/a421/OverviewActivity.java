@@ -29,9 +29,6 @@ public class OverviewActivity extends MenuParentActivity {
         players = game.getPlayers();
 
 
-
-
-
         Integer countScore = 0;
         Integer nbPlayers = players.length;
         String displayedScore;
@@ -71,11 +68,21 @@ public class OverviewActivity extends MenuParentActivity {
         for(int i=0; i<nbPlayers; i++){
             listName[i] = players[i].getName()+ "\n" + "AB : "+players[i].getTrueSquall().toString();
         }
-
-
         GridView nameViewGrid = (GridView) findViewById(R.id.nameViewGrid);
         nameViewGrid.setNumColumns(players.length);
         nameViewGrid.setAdapter(new ArrayAdapter<String>(this,R.layout.text_grid_overview, listName));
+
+
+
+        String[] scoresTotal = new String[nbPlayers];
+        for(int i=0; i<nbPlayers; i++){
+            scoresTotal[i] = players[i].calcTotal().toString();
+        }
+        GridView totalViewGrid = (GridView) findViewById(R.id.totalViewGrid);
+        totalViewGrid.setNumColumns(players.length);
+        totalViewGrid.setAdapter(new ArrayAdapter<String>(this,R.layout.text_grid_overview, scoresTotal));
+
+
     }
 
 }

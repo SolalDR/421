@@ -1,5 +1,7 @@
 package com.solaldussout_revel.a421;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -60,9 +62,6 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     MenuItem.OnMenuItemClickListener stopGameButtonListenerClick = new MenuItem.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            MainActivity.setGame(null);
-            Intent secondeActivite = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(secondeActivite);
             return false;
         }
     };

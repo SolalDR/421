@@ -1,6 +1,7 @@
 package com.solaldussout_revel.a421;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.app.Dialog;
@@ -33,6 +34,7 @@ public class ScoreActivity extends MenuParentActivity {
     TextView actualScoreLabel;
     TextView playerNameLabel;
     Button validScoreButton;
+    Boolean isFirstTry;
 
     SpinnerDialog mSpinnerDialog;
     ArrayList mqrOptions;
@@ -48,6 +50,7 @@ public class ScoreActivity extends MenuParentActivity {
 
         this.game = MainActivity.getGame();
         this.player = game.getActualPlayer();
+        this.isFirstTry = false;
         this.setMqrOptions();
 
         //Get textview
@@ -63,6 +66,9 @@ public class ScoreActivity extends MenuParentActivity {
         selfSquallLabel.setText(selfSquallText);
         coSquallLabel.setText(coSquallText);
         playerNameLabel.setText(this.player.getName());
+
+        FloatingActionButton firstTry = (FloatingActionButton) findViewById(R.id.firstTryButton);
+        firstTry.setOnClickListener(firstTryListener);
 
         //Gestison de la grille
         String[] combinaisons = this.game.getCombinaisonsLib();
@@ -93,6 +99,9 @@ public class ScoreActivity extends MenuParentActivity {
         validScoreButton = (Button) findViewById(R.id.validScoreButton);
         validScoreButton.setOnClickListener(validScoreListener);
     }
+
+
+
 
     public void updateTmpScore(){
         Float value = tmpCombin.getValue();
@@ -164,7 +173,7 @@ public class ScoreActivity extends MenuParentActivity {
                     } else {
                         game.setCoSquall(game.getCoSquall()+1);
                     }
-                    player.addScore(combin.getLib(), combin.getValue(), combin.getActiveSquall(), game.getCoSquall());
+                    player.addScore(combin.getLib(), combin.getValue(), combin.getActiveSquall(), game.getCoSquall(), isFirstTry);
                     game.nextPlayer();
                     Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
                     startActivity(secondeActivite);
@@ -175,6 +184,23 @@ public class ScoreActivity extends MenuParentActivity {
         }
     };
 
+    View.OnClickListener firstTryListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            System.out.println("Bonjour");
+            Toast toast;
+            if(isFirstTry){
+                isFirstTry = false;
+                toast = Toast.makeText(getApplicationContext(), "C'est plus un first try déso <3", Toast.LENGTH_SHORT);
+
+            } else {
+                isFirstTry = true;
+                toast = Toast.makeText(getApplicationContext(), "C'est un First try mon frère", Toast.LENGTH_SHORT);
+            }
+            toast.show();
+        }
+    };
+
     private void setMqrOptions(){
         mqrOptions = new ArrayList<>();
         mqrOptions.add("2");
@@ -182,6 +208,13 @@ public class ScoreActivity extends MenuParentActivity {
         mqrOptions.add("4");
         mqrOptions.add("5");
         mqrOptions.add("6");
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast toast = Toast.makeText(getApplicationContext(), "Fais pas ça frère...", Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 
 }

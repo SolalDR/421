@@ -11,14 +11,33 @@ public class Score {
     private Integer selfSquall;
     private Integer coSquall;
     private Boolean activeSquall;
+    private Boolean isFirstTry;
 
-    public Score(String lib, float valueBase, int selfSquall, int coSquall, boolean activeSquall){
+    public Score(String lib, float valueBase, int selfSquall, int coSquall, boolean activeSquall, boolean firstTry){
         this.setSelfSquall(selfSquall);
         this.setCoSquall(coSquall);
         this.setValueBase(valueBase);
         this.setActiveSquall(activeSquall);
         this.setLib(lib);
+        this.setFirstTry(firstTry);
         this.calcTotal();
+    }
+
+    public Boolean getFirstTry() {
+        return isFirstTry;
+    }
+
+    public void setFirstTry(Boolean firstTry) {
+        isFirstTry = firstTry;
+    }
+
+    public Boolean isFirstTry(){
+        Boolean f = this.getFirstTry();
+        if(f){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getLib() {
@@ -83,6 +102,9 @@ public class Score {
             totalValue = b + sResult + cResult;
         } else {
             totalValue = b;
+        }
+        if(this.getActiveSquall() && this.isFirstTry()){
+            totalValue+= 1;
         }
 
         this.setTotal(totalValue);
