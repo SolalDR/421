@@ -37,10 +37,20 @@
     </style>
 
     <style name="AppTheme.buttonLight">
-        <item name="android:background">@color/firstLightColor</item>
-        <item name="android:textColor">@color/firstDarkColor</item>
+        <item name="android:background">@color/secondLightColor</item>
+        <item name="android:textColor">@color/secondDarkColor</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="AppTheme.buttonDark">
+        <item name="android:textColor">@color/firstLightColor</item>
+        <item name="android:background">@color/firstDarkColor</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AppTheme.textView">
+        <item name="android:textColor">@color/firstLightColor</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
 
 </resources>
