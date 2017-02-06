@@ -18,7 +18,7 @@ public class Game {
     public Game(){
         this.setCoSquall(0);
         this.setPaused(true);
-        this.setCurrentTour(0);
+        this.setCurrentTour(1);
         this.setCurrentPlayer(0);
         this.setCombinaisons();
     }
@@ -163,9 +163,47 @@ public class Game {
             return players[next];
         }
     }
+
+    public void previousShot(){
+        Integer next = getCurrentPlayer()-1;
+
+        Player[] players = getPlayers();
+        if(players != null){
+            if(next == -1 ){
+                next = players.length-1;
+                if(getCurrentTour() > 1){
+                    setCurrentTour(getCurrentTour()-1);
+                }
+            }
+
+            Player p = players[next];
+            Score last = p.getLastScore();
+            if(last != null){
+                if(last.getActiveSquall()){
+                    setCoSquall(getCoSquall()-1);
+                }
+
+                p.deleteLastScore();
+
+
+                setCurrentPlayer(next);
+            }
+        }
+    }
+
     public Integer getTrueSquall(){
         Integer coSquallValue = this.getCoSquall();
         Integer trueSquall = coSquallValue-3>0 ? coSquallValue-3 : 0;
         return trueSquall;
+    }
+
+    public Player getPlayerFromName(String name){
+        Player p = null;
+        for(int i=0; i<this.players.length; i++){
+            if(this.players[i].getName().equals(name)){
+                p = this.players[i];
+            }
+        }
+        return p;
     }
 }

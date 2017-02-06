@@ -13,6 +13,7 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_score"
     android:weightSum="1"
+    style="@style/AppTheme.layoutActivity"
     android:isScrollContainer="true">
 
     <ScrollView

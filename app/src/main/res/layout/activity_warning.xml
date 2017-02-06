@@ -5,9 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.solaldussout_revel.a421.OverviewActivity">
+    tools:context="com.solaldussout_revel.a421.WarningActivity"
+    style="@style/AppTheme.layoutActivity">
 
     <include layout="@layout/menu_layout" />
-    <include layout="@layout/content_overview" />
+
+    <include layout="@layout/content_warning" />
+
 
 </android.support.design.widget.CoordinatorLayout>

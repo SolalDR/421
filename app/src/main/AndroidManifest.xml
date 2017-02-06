@@ -30,6 +30,10 @@
         <activity
             android:name=".OverviewActivity"
             android:label="@string/title_activity_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WarningActivity"
+            android:label="@string/title_activity_warning"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

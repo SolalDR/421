@@ -82,6 +82,7 @@ public class Player {
     public void addScore(String lib, float valueBase, boolean activeSquall, int coSquall, boolean firsttry){
         Score[] preScores = this.getScores();
         Score[] newScores;
+        System.out.println("Prescore" + preScores);
         if(preScores == null){
             newScores = new Score[1];
         } else {
@@ -149,5 +150,48 @@ public class Player {
         Integer result = selfSquallValue-3>0 ? selfSquallValue-3 : 0;
         return result;
     }
+
+    public Score getLastScore(){
+        Score[] scoresT = getScores();
+        Score score;
+        if(scoresT!=null){
+            score = scoresT[scoresT.length-1];
+        }  else {
+            score =null;
+        }
+        return score;
+    }
+
+
+    public void deleteLastScore(){
+        Score last = getLastScore();
+        //Baisser l'AB si besoin
+        if(last.getActiveSquall()){
+            this.setSelfSquall(this.getSelfSquall()-1);
+        }
+
+
+        Score[] actuals = getScores();
+        Score[] newScores;
+        if(last != null){
+            //Supprimer les derniers scores
+            if(actuals.length>1){
+                newScores = new Score[actuals.length-1];
+            } else {
+                newScores = null;
+            }
+
+            if(newScores != null){
+                for(int i=0; i<newScores.length; i++){
+                    newScores[i] = actuals[i];
+                }
+            }
+
+            this.setScores(newScores);
+
+
+        }
+    }
+
 
 }
