@@ -35,12 +35,12 @@ public abstract class MenuParentActivity extends AppCompatActivity {
         MenuItem overviewButton = menu.findItem(R.id.overviewButton);
         MenuItem scoreActivityButton = menu.findItem(R.id.scoreActivityButton);
         MenuItem stopGameButton = menu.findItem(R.id.stopGame);
-
+        MenuItem settingButton = menu.findItem(R.id.settingActivityButton);
 
         overviewButton.setOnMenuItemClickListener(setOverviewListenerClick);
         scoreActivityButton.setOnMenuItemClickListener(setScoreActivityListenerClick);
         stopGameButton.setOnMenuItemClickListener(stopGameButtonListenerClick);
-
+        settingButton.setOnMenuItemClickListener(settingListenerClick);
 
         ImageButton previousButton = (ImageButton) findViewById(R.id.previousButtonNav);
         previousButton.setOnClickListener(previousButtonListener);
@@ -50,6 +50,20 @@ public abstract class MenuParentActivity extends AppCompatActivity {
         warningButton.setOnClickListener(setWarningClickListener);
         return true;
     }
+
+
+    protected void initToolbar(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        System.out.println(toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    //////////////////////////////////////////////
+    //
+    //          Boutons du menu linéaire
+    //
+    ///////////////////////////////////////////////
+
 
     View.OnClickListener setWarningClickListener = new View.OnClickListener() {
         @Override
@@ -66,6 +80,21 @@ public abstract class MenuParentActivity extends AppCompatActivity {
             game.previousShot();
             Intent secondeActivite = new Intent(getBaseContext(), ScoreActivity.class);
             startActivity(secondeActivite);
+        }
+    };
+
+    //////////////////////////////////////////////
+    //
+    //          Boutons du menu interne
+    //
+    ///////////////////////////////////////////////
+
+    MenuItem.OnMenuItemClickListener settingListenerClick = new MenuItem.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            Intent secondeActivite = new Intent(getBaseContext(), PreferenceActivity.class);
+            startActivity(secondeActivite);
+            return false;
         }
     };
 
@@ -97,9 +126,5 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     };
 
 
-    protected void initToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        System.out.println(toolbar);
-        setSupportActionBar(toolbar);
-    }
+
 }

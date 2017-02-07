@@ -5,16 +5,24 @@
     android:paddingTop="60dp"
     android:orientation="vertical"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingRight="20dp"
+    style="@style/AppTheme.layoutActivity">
 
 
     <TextView
-        android:text="Rentrez au minimum 2 joueurs"
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/debug1" />
+
+    <TextView
+        android:text="Qui veut jouer ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"
         android:gravity="center"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        style="@style/AppTheme.textView"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -31,7 +39,8 @@
                 android:text="Joueur 1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userDefineLabel1" />
+                android:id="@+id/userDefineLabel1"
+                style="@style/AppTheme.textView"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -55,7 +64,8 @@
                 android:text="Joueur 2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userDefineLabel2" />
+                android:id="@+id/userDefineLabel2"
+                style="@style/AppTheme.textView"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -79,7 +89,8 @@
                 android:text="Joueur 3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userDefineLabel3" />
+                android:id="@+id/userDefineLabel3"
+                style="@style/AppTheme.textView"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -103,7 +114,8 @@
                 android:text="Joueur 4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userDefineLabel4" />
+                android:id="@+id/userDefineLabel4"
+                style="@style/AppTheme.textView"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -127,7 +139,9 @@
                 android:text="Joueur 5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userDefineLabel5" />
+                android:id="@+id/userDefineLabel5"
+                style="@style/AppTheme.textView"
+                />
 
             <EditText
                 android:layout_width="match_parent"
@@ -139,20 +153,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:hint="Nom ici..." />
+                android:hint="Nom ici..."
+                />
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:text="Commencez la partie"
+        android:text="Validez"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSaveUsers" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/debug1" />
 
 </LinearLayout>

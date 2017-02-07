@@ -1,10 +1,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="101"
-        android:title="@string/action_settings" />
-    <item android:title="Précédent" />
+
     <item android:title="Arrêter la partie" android:id="@+id/stopGame" />
     <item
         android:title="Voir la grille"
@@ -14,4 +10,9 @@
         android:title="Retour à la partie"
         android:orderInCategory="102"
         android:id="@+id/scoreActivityButton" />
+    <item
+        android:title="Réglages"
+        android:orderInCategory="102"
+        android:id="@+id/settingActivityButton"/>
+
 </menu>

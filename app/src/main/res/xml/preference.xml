@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Nénette">
+        <CheckBoxPreference
+            android:key="nenetteValue"
+            android:title="Nenette à 2 points"
+            android:summaryOn="Définis la valeure d'une nenette, si la case est coché, la nenette sera de 2 points, sinon la valeure sera de 0"
+            android:summaryOff="Définis la valeure d'une nenette"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:key="nenetteSquall"
+            android:title="Nenette brise les bourrasques"
+            android:summaryOn="Si coché, la nenette brisera les bourrasques, si non elle se comportera comme le reste des combinaisons et incrémentera la bourrasque"
+            android:summaryOff="Définis le comportement d'une nenette sur une bourrasque"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Koala">
+        <CheckBoxPreference
+            android:key="koalaDisplay"
+            android:title="Combinaison Koala"
+            android:summaryOn="Si coché, le koala est une combinaison et sa valeure par défaut est -1"
+            android:summaryOff="Si coché, activé la combinaison koala"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="421">
+        <CheckBoxPreference
+            android:key="first421"
+            android:title="Premier 421 à 13 points"
+            android:summaryOff="Si coché, le premier 421 de la partie est compté à 13 points"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

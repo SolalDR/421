@@ -13,8 +13,9 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_score"
     android:weightSum="1"
+    android:isScrollContainer="true"
     style="@style/AppTheme.layoutActivity"
-    android:isScrollContainer="true">
+    tools:style="lay">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,25 +25,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <TextView
-                android:text="Selectionnez un score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:gravity="center"
-                android:paddingBottom="0dp"
-                android:textSize="24sp"
-                />
+            android:orientation="vertical">
 
             <TextView
                 android:text="Yolo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/playerNameLabel"
+                style="@style/AppTheme.textView"
                 android:gravity="center"
-                android:paddingBottom="20dp" />
+                android:textSize="24sp" />
+
+            <TextView
+                android:text="Rentrer un score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:textSize="12sp"
+                android:elevation="1dp"
+                style="@style/AppTheme.textView"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -55,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/selfSquallLabel"
                     android:layout_weight="1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    style="@style/AppTheme.buttonLight"/>
 
                 <TextView
                     android:text="BC : 0"
@@ -63,7 +67,11 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/coSquallLabel"
                     android:gravity="center"
-                    android:layout_weight="1" />
+                    android:layout_marginLeft="2dp"
+
+
+                    android:layout_weight="1"
+                    style="@style/AppTheme.buttonLight"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,7 +79,9 @@
                     android:id="@+id/actualScoreLabel"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:text="joue !" />
+                    android:text="joue !"
+                    android:layout_marginLeft="2dp"
+                    style="@style/AppTheme.buttonLight"/>
             </LinearLayout>
 
             <GridView
@@ -80,13 +90,19 @@
                 android:clickable="false"
                 android:numColumns="2"
                 android:nestedScrollingEnabled="false"
-                android:layout_height="350dp" />
+                android:layout_height="350dp"
+                style="@style/AppTheme.layoutActivity"
+                android:horizontalSpacing="15dp"
+                android:verticalSpacing="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
 
             <Button
                 android:text="Validez le score"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/validScoreButton" />
+                android:id="@+id/validScoreButton"
+                style="@style/AppTheme.buttonLight"
+                android:layout_height="50dp" />
         </LinearLayout>
     </ScrollView>
 
