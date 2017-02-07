@@ -82,7 +82,6 @@ public class Player {
     public void addScore(String lib, float valueBase, boolean activeSquall, int coSquall, boolean firsttry){
         Score[] preScores = this.getScores();
         Score[] newScores;
-        System.out.println("Prescore" + preScores);
         if(preScores == null){
             newScores = new Score[1];
         } else {

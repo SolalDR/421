@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
-/**
- * Created by Solal on 31/01/2017.
- */
 
 public class SpinnerDialog extends Dialog {
     private ArrayList<String> mList;

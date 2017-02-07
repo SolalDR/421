@@ -70,7 +70,7 @@ public class ScoreActivity extends MenuParentActivity {
         FloatingActionButton firstTry = (FloatingActionButton) findViewById(R.id.firstTryButton);
         firstTry.setOnClickListener(firstTryListener);
 
-        //Gestison de la grille
+        //Gestion de la grille
         String[] combinaisons = this.game.getCombinaisonsLib();
         GridView grid = (GridView)findViewById(R.id.gridViewTest);
         ArrayAdapter adapater =  new ArrayAdapter(this, R.layout.button_grid, combinaisons);
@@ -168,12 +168,22 @@ public class ScoreActivity extends MenuParentActivity {
             Combinaison combin = tmpCombin;
             if(combin != null){
                 if(combin.getLib() != null && combin.getValue() != null && combin.getActiveSquall() != null){
-                    if(combin.getLib().equals("Schlass")){
+
+                    Float valueBase = combin.getValue();
+
+
+                    if(combin.getLib().equals("Schlass")||(combin.getLib().equals("Nenette") && game.getNenetteBrokeSquall())){
                         game.setCoSquall(0);
                     } else {
                         game.setCoSquall(game.getCoSquall()+1);
                     }
-                    player.addScore(combin.getLib(), combin.getValue(), combin.getActiveSquall(), game.getCoSquall(), isFirstTry);
+
+                    if(combin.getLib().equals("421") && game.getBonusFirst421()){
+                        game.setBonusFirst421(false);
+                        valueBase+=4;
+                    }
+
+                    player.addScore(combin.getLib(), valueBase, combin.getActiveSquall(), game.getCoSquall(), isFirstTry);
                     game.nextPlayer();
                     Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
                     startActivity(secondeActivite);

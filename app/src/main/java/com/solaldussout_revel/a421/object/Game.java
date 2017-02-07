@@ -1,5 +1,10 @@
 package com.solaldussout_revel.a421.object;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import java.util.Map;
+
 /**
  * Created by Solal on 30/01/2017.
  */
@@ -14,8 +19,14 @@ public class Game {
     private String[] combinaisonsLib;
     private Player players[];
 
+    private Float nenetteValue;
+    private Boolean koalaExist;
+    private Boolean bonusFirst421;
+    private Boolean nenetteBrokeSquall;
 
-    public Game(){
+
+    public Game(Map pref){
+        this.setPref(pref);
         this.setCoSquall(0);
         this.setPaused(true);
         this.setCurrentTour(1);
@@ -28,9 +39,55 @@ public class Game {
         this.setCurrentPlayer(0);
     }
 
+    public void setPref(Map pref){
 
+        if((Boolean) pref.get("nenetteValue")){
+            nenetteValue =  ((Integer) 2).floatValue();
+        } else {
+            nenetteValue =  ((Integer) 0).floatValue();
+        }
+
+        if((Boolean) pref.get("nenetteSquall")) {
+            nenetteBrokeSquall = true;
+        } else {
+            nenetteBrokeSquall = false;
+        }
+
+        if((Boolean) pref.get("koalaDisplay")) {
+            koalaExist = true;
+        }
+
+        if((Boolean) pref.get("first421")) {
+            bonusFirst421 = true;
+        }
+
+
+        System.out.println(nenetteValue);
+        System.out.println(nenetteBrokeSquall);
+        System.out.println(koalaExist);
+        System.out.println(bonusFirst421);
+
+
+    }
 
     //Getteurs and Setters
+
+    public Boolean getKoalaExist() {
+        return koalaExist;
+    }
+
+    public void setKoalaExist(Boolean koalaExist) {
+        this.koalaExist = koalaExist;
+    }
+
+    public Boolean getBonusFirst421() {
+        return bonusFirst421;
+    }
+
+    public void setBonusFirst421(Boolean bonusFirst421) {
+        this.bonusFirst421 = bonusFirst421;
+    }
+
     public Integer getCoSquall() {
         return coSquall;
     }
@@ -72,6 +129,7 @@ public class Game {
     }
 
     public void setCombinaisons(){
+
         this.combinaisons = new Combinaison[]{
                 new Combinaison("421", (float) 9, true),
                 new Combinaison("Schlass", (float) 0, false),
@@ -79,16 +137,15 @@ public class Game {
                 new Combinaison("Iniakin", (float) 6, true),
                 new Combinaison("Sphinx", (float) 5, true),
                 new Combinaison("Eddy Malou", (float) 1.5, true),
-                new Combinaison("Nenette", (float) 0, false),
+                new Combinaison("Koala", (float)-1, false),
+                new Combinaison("Nenette", nenetteValue, false),
                 new Combinaison("KT1", (float) 1, false),
-                new Combinaison("Koala", (float) -1, false),
                 new Combinaison("MQR", (float) 6, true),
                 new Combinaison("Guinguette", (float) 6, true),
                 new Combinaison("Colombette", (float) 4, true),
                 new Combinaison("Punk", (float) 3, true),
                 new Combinaison("Molotov", (float) 6, true)
         };
-
 
         this.combinaisonsLib = new String[this.combinaisons.length];
         System.out.println(this.combinaisonsLib.length);
@@ -98,17 +155,20 @@ public class Game {
         }
     }
 
+    public Boolean getNenetteBrokeSquall() {
+        return nenetteBrokeSquall;
+    }
+
+    public void setNenetteBrokeSquall(Boolean nenetteBrokeSquall) {
+        this.nenetteBrokeSquall = nenetteBrokeSquall;
+    }
+
     public Combinaison[] getCombinaisons() {
         return combinaisons;
     }
 
 
     public Combinaison getCombinaison(Integer id){
-/*        for(int i=0; i<this.combinaisons.length; i++){
-            if(this.combinaisons[i].getLib()==lib){
-                return this.combinaisons[i];
-            }
-        }*/
         return this.combinaisons[id];
     }
 
