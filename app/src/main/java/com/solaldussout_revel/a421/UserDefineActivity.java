@@ -35,9 +35,6 @@ public class UserDefineActivity extends MenuParentActivity {
         users[3] = (EditText) findViewById(R.id.userDefineField4);
         users[4] = (EditText) findViewById(R.id.userDefineField5);
 
-        debug = (TextView)findViewById(R.id.debug1);
-        debug.setText(users[0].getText().toString());
-
 
         saveUserButton = (Button)findViewById(R.id.buttonSaveUsers);
         saveUserButton.setOnClickListener(saveUserListener);
@@ -58,8 +55,6 @@ public class UserDefineActivity extends MenuParentActivity {
                 }
             }
 
-            debug.setText(p.toString()+ testplayer.getName());
-
             if(p>1) {
                 Intent scoreActivity = new Intent(UserDefineActivity.this, ScoreActivity.class);
                 startActivity(scoreActivity);
@@ -67,5 +62,13 @@ public class UserDefineActivity extends MenuParentActivity {
         }
 
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
 
 }

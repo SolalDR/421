@@ -1,8 +1,6 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -17,7 +15,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AppTheme.mainButton"></style>
+
+
+    <!-- Style des activités -->
+
+    <style name="AppTheme.layoutActivity">
+        <item name="android:background">@color/secondDarkColor</item>
+    </style>
 
     <style name="AppTheme.activityTitle">
         <item name="android:layout_width">match_parent</item>
@@ -28,7 +32,15 @@
         <item name="android:padding">10dp</item>
     </style>
 
-    <style name="AppTheme.activityMention"></style>
+    <style name="AppTheme.textView">
+        <item name="android:textColor">@color/firstLightColor</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
+
+    <!-- Style Bouttons -->
+
 
     <style name="AppTheme.buttonNav">
         <item name="android:layout_width">wrap_content</item>
@@ -36,11 +48,6 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:padding">10dp</item>
         <item name="android:layout_weight">1</item>
-    </style>
-
-
-    <style name="AppTheme.layoutActivity">
-        <item name="android:background">@color/secondDarkColor</item>
     </style>
 
     <style name="AppTheme.buttonLight">
@@ -55,10 +62,35 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="AppTheme.textView">
-        <item name="android:textColor">@color/firstLightColor</item>
+    <style name="AppTheme.buttonLightBottom">
+        <item name="android:background">@color/secondLightColor</item>
+        <item name="android:textColor">@color/secondDarkColor</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
     </style>
+
+    <!-- Style Champs de text -->
+
+
+    <style name="AppTheme.customEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:ems">10</item>
+        <item name="android:hint">Nom ici...</item>
+        <item name="android:background">@drawable/background_edit_text</item>
+        <item name="android:textColor">@color/firstLightColor</item>
+        <item name="android:textColorHint">@color/secondLightColor</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+
 
 
 </resources>

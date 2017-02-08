@@ -1,32 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/secondLightColor"
+    android:gravity="center">
+
+    <Spinner
+        android:id="@+id/dialog_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center|start"
+        android:layout_below="@+id/dialog_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/dialogCancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_below="@+id/dialog_spinner"
+            style="@style/AppTheme.buttonDark"
+            android:layout_toEndOf="@+id/dialogOK"
+            android:layout_toRightOf="@+id/dialogOK"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentLeft="false"
+            android:layout_weight="1"
+            android:layout_marginRight="2dp" />
+
+        <Button
+            android:id="@+id/dialogOK"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_below="@id/dialog_spinner"
+            style="@style/AppTheme.buttonDark"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/dialog_label"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:hint="Please select an option"
-        />
-    <Spinner
-        android:id="@+id/dialog_spinner"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        />
-    <Button
-        android:id="@+id/dialogOK"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="OK"
-        android:layout_below="@id/dialog_spinner"
-        />
+        android:hint="Rentre une valeur de MQR"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/firstLightColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        android:id="@+id/dialogCancel"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:layout_below="@+id/dialog_spinner"
-        android:layout_toRightOf="@+id/dialogOK"
-        android:layout_toEndOf="@+id/dialogOK" />
 </RelativeLayout>

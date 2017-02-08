@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="60dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    style="@style/AppTheme.layoutActivity">
+    style="@style/AppTheme.layoutActivity"
+    android:paddingTop="60dp">
 
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/debug1" />
-
-    <TextView
-        android:text="Qui veut jouer ?"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:gravity="center"
-        android:textSize="18sp"
-        style="@style/AppTheme.textView"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:text="Qui veut jouer ?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:gravity="center"
+            android:textSize="18sp"
+            style="@style/AppTheme.textView"
+            android:layout_marginTop="20dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -43,16 +37,9 @@
                 style="@style/AppTheme.textView"/>
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:layout_gravity="bottom"
-                android:ems="10"
-                android:id="@+id/userDefineField1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Nom ici..." />
+                style="@style/AppTheme.customEditText"
+                android:id="@+id/userDefineField1" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -68,16 +55,8 @@
                 style="@style/AppTheme.textView"/>
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:layout_gravity="bottom"
-                android:ems="10"
-                android:id="@+id/userDefineField2"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Nom ici..." />
+                style="@style/AppTheme.customEditText"
+                android:id="@+id/userDefineField2" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,16 +72,9 @@
                 style="@style/AppTheme.textView"/>
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress|textPersonName"
-                android:layout_gravity="bottom"
-                android:ems="10"
-                android:id="@+id/userDefineField3"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Nom ici..." />
+                style="@style/AppTheme.customEditText"
+                android:id="@+id/userDefineField3" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -118,16 +90,8 @@
                 style="@style/AppTheme.textView"/>
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress|textPersonName"
-                android:layout_gravity="bottom"
-                android:ems="10"
-                android:id="@+id/userDefineField4"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Nom ici..." />
+                style="@style/AppTheme.customEditText"
+                android:id="@+id/userDefineField4" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,24 +108,15 @@
                 />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress|textPersonName"
-                android:layout_gravity="bottom"
-                android:ems="10"
-                android:id="@+id/userDefineField5"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:hint="Nom ici..."
-                />
+                style="@style/AppTheme.customEditText"
+                android:id="@+id/userDefineField5" />
+
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:text="Validez"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonSaveUsers" />
+        android:id="@+id/buttonSaveUsers"
+        style="@style/AppTheme.buttonLightBottom"
+        android:text="Validez" />
 
-</LinearLayout>
+</RelativeLayout>

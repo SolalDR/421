@@ -41,32 +41,32 @@ public class Game {
 
     public void setPref(Map pref){
 
-        if((Boolean) pref.get("nenetteValue")){
-            nenetteValue =  ((Integer) 2).floatValue();
+        if(pref!=null){
+
+            if(pref.get("nenetteValue") != null && (Boolean) pref.get("nenetteValue")){
+                nenetteValue =  ((Integer) 2).floatValue();
+            } else {
+                nenetteValue =  ((Integer) 0).floatValue();
+            }
+
+            if(pref.get("nenetteSquall") != null && (Boolean) pref.get("nenetteSquall")) {
+                nenetteBrokeSquall = true;
+            } else {
+                nenetteBrokeSquall = false;
+            }
+
+            if(pref.get("first421") != null && (Boolean) pref.get("first421")) {
+                bonusFirst421 = true;
+            } else {
+                bonusFirst421 = false;
+            }
+
         } else {
             nenetteValue =  ((Integer) 0).floatValue();
-        }
-
-        if((Boolean) pref.get("nenetteSquall")) {
-            nenetteBrokeSquall = true;
-        } else {
             nenetteBrokeSquall = false;
-        }
-
-        if((Boolean) pref.get("koalaDisplay")) {
             koalaExist = true;
-        }
-
-        if((Boolean) pref.get("first421")) {
             bonusFirst421 = true;
         }
-
-
-        System.out.println(nenetteValue);
-        System.out.println(nenetteBrokeSquall);
-        System.out.println(koalaExist);
-        System.out.println(bonusFirst421);
-
 
     }
 
