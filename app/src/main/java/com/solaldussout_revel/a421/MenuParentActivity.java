@@ -1,6 +1,7 @@
 package com.solaldussout_revel.a421;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +13,20 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.solaldussout_revel.a421.object.Game;
 
 public abstract class MenuParentActivity extends AppCompatActivity {
+    public static final int CD_PREVIOUS = 1;
+    public static final int CD_STOP = 2;
+
 
     Toolbar toolbar;
     Game game;
+    ConfirmDialog confirmDialog;
+    Integer codeReady;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +70,8 @@ public abstract class MenuParentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+
+
     //////////////////////////////////////////////
     //
     //          Boutons du menu linéaire
@@ -88,9 +98,10 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     View.OnClickListener previousButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            game.previousShot();
-            Intent secondeActivite = new Intent(getBaseContext(), ScoreActivity.class);
-            startActivity(secondeActivite);
+            String name = game.getActualPlayer().getName();
+            confirm("Voulez vous vraiment revenir au tour de  "+name+" ?");
+            codeReady = MenuParentActivity.CD_PREVIOUS;
+
         }
     };
 
@@ -139,12 +150,43 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     MenuItem.OnMenuItemClickListener stopGameButtonListenerClick = new MenuItem.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            Intent secondeActivite = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(secondeActivite);
+            codeReady = MenuParentActivity.CD_STOP;
+            confirm("Voulez vous vraiment quittez la partie ? Vous serez redirigé vers la page d'accueil.");
             return false;
         }
     };
 
+    public void confirmReady(){
+        int code = codeReady;
 
+        switch (code){
+            case MenuParentActivity.CD_PREVIOUS :
+                game.previousShot();
+                startActivity(new Intent(getBaseContext(), ScoreActivity.class));
+                break;
+
+            case MenuParentActivity.CD_STOP : startActivity(new Intent(getBaseContext(), MainActivity.class));
+                break;
+
+            default:
+                System.out.println("codeReady is Null");
+                break;
+        }
+
+        codeReady = null;
+
+    }
+
+    public void confirm(String message){
+        confirmDialog = new ConfirmDialog(this, message, new ConfirmDialog.DialogListener() {
+            public void cancelled() {
+
+            }
+            public void ready() {
+                confirmReady();
+            }
+        });
+        confirmDialog.show();
+    }
 
 }
