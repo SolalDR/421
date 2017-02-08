@@ -35,7 +35,7 @@
         <ImageButton
             app:srcCompat="@drawable/play_partie"
             style="@style/AppTheme.buttonNav"
-            android:id="@+id/imageButton" />
+            android:id="@+id/playGameButton" />
 
         <ImageButton
             app:srcCompat="@drawable/warning"

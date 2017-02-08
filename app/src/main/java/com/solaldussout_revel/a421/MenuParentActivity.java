@@ -43,11 +43,15 @@ public abstract class MenuParentActivity extends AppCompatActivity {
         settingButton.setOnMenuItemClickListener(settingListenerClick);
 
         ImageButton previousButton = (ImageButton) findViewById(R.id.previousButtonNav);
-        previousButton.setOnClickListener(previousButtonListener);
-
-
         ImageButton warningButton= (ImageButton) findViewById(R.id.warningButton);
+        ImageButton overviewButtonNav= (ImageButton) findViewById(R.id.overviewButtonNav);
+        ImageButton scoreActivityNav = (ImageButton) findViewById(R.id.playGameButton);
+
+        overviewButtonNav.setOnClickListener(setOverviewClickListener);
         warningButton.setOnClickListener(setWarningClickListener);
+        previousButton.setOnClickListener(previousButtonListener);
+        scoreActivityNav.setOnClickListener(scoreActivityNavListener);
+
         return true;
     }
 
@@ -68,8 +72,15 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     View.OnClickListener setWarningClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            System.out.println("Bonjour");
             Intent secondeActivite = new Intent(getBaseContext(), WarningActivity.class);
+            startActivity(secondeActivite);
+        }
+    };
+
+    View.OnClickListener setOverviewClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent secondeActivite = new Intent(getBaseContext(), OverviewActivity.class);
             startActivity(secondeActivite);
         }
     };
@@ -82,6 +93,15 @@ public abstract class MenuParentActivity extends AppCompatActivity {
             startActivity(secondeActivite);
         }
     };
+
+    View.OnClickListener scoreActivityNavListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent secondeActivite = new Intent(getBaseContext(), ScoreActivity.class);
+            startActivity(secondeActivite);
+        }
+    };
+
 
     //////////////////////////////////////////////
     //
