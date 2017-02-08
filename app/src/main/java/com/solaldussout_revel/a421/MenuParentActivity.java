@@ -71,7 +71,6 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     }
 
 
-
     //////////////////////////////////////////////
     //
     //          Boutons du menu linéaire
@@ -98,8 +97,7 @@ public abstract class MenuParentActivity extends AppCompatActivity {
     View.OnClickListener previousButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String name = game.getActualPlayer().getName();
-            confirm("Voulez vous vraiment revenir au tour de  "+name+" ?");
+            confirm("Voulez vous vraiment revenir au tour précédent ?");
             codeReady = MenuParentActivity.CD_PREVIOUS;
 
         }
@@ -187,6 +185,20 @@ public abstract class MenuParentActivity extends AppCompatActivity {
             }
         });
         confirmDialog.show();
+    }
+
+
+    public void hideMenuTop(){
+        ImageButton previousButton = (ImageButton) findViewById(R.id.previousButtonNav);
+        ImageButton warningButton= (ImageButton) findViewById(R.id.warningButton);
+        ImageButton overviewButtonNav= (ImageButton) findViewById(R.id.overviewButtonNav);
+        ImageButton scoreActivityNav = (ImageButton) findViewById(R.id.playGameButton);
+
+        previousButton.setVisibility(View.INVISIBLE);
+        warningButton.setVisibility(View.INVISIBLE);
+        overviewButtonNav.setVisibility(View.INVISIBLE);
+        scoreActivityNav.setVisibility(View.INVISIBLE);
+
     }
 
 }
