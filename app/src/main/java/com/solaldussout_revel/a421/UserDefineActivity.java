@@ -28,6 +28,8 @@ public class UserDefineActivity extends AppCompatActivity {
         game = MainActivity.getGame();
         setContentView(R.layout.activity_user_define);
 
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
         ImageButton settingsButton = (ImageButton) findViewById(R.id.settingsButton);
 
         users[0] = (EditText) findViewById(R.id.userDefineField1);
