@@ -9,6 +9,9 @@ import android.view.View;
 import com.solaldussout_revel.a421.object.*;
 import android.widget.GridView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,10 @@ public class OverviewActivity extends MenuParentActivity {
         String displayedScore;
         String[] listString;
         Float total;
+
+        TextView coSquallLabel = (TextView) findViewById(R.id.coSquallLabel);
+        coSquallLabel.setText("BC : "+game.getTrueSquall());
+
 
         for(int i=0; i<nbPlayers; i++){
             scores = players[i].getScores();
@@ -68,9 +75,11 @@ public class OverviewActivity extends MenuParentActivity {
         for(int i=0; i<nbPlayers; i++){
             listName[i] = players[i].getName()+ "\n" + "AB : "+players[i].getTrueSquall().toString();
         }
+
+
         GridView nameViewGrid = (GridView) findViewById(R.id.nameViewGrid);
         nameViewGrid.setNumColumns(players.length);
-        nameViewGrid.setAdapter(new ArrayAdapter<String>(this,R.layout.text_grid_overview, listName));
+        nameViewGrid.setAdapter(new ArrayAdapter<String>(this,R.layout.text_grid_header_overview, listName));
 
 
 

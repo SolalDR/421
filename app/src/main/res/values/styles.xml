@@ -63,7 +63,7 @@
     </style>
 
     <style name="AppTheme.buttonLightBottom">
-        <item name="android:background">@color/secondLightColor</item>
+        <item name="android:background">@color/firstLightColor</item>
         <item name="android:textColor">@color/secondDarkColor</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:layout_width">match_parent</item>
