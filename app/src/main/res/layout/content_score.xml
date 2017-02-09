@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_score"
@@ -14,22 +14,13 @@
     style="@style/AppTheme.layoutActivity"
     tools:style="lay">
 
-    <Button
-        android:text="Validez le score"
-        android:id="@+id/validScoreButton"
-        style="@style/AppTheme.buttonLightBottom" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@color/secondDarkColor">
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -97,7 +88,7 @@
                 style="@style/AppTheme.buttonLight"/>
         </LinearLayout>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -105,16 +96,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:baselineAligned="false"
-                android:minHeight="0dp"
-                android:isScrollContainer="true">
+                android:orientation="vertical">
 
                 <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none"
-                    android:paddingBottom="50dp">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
                     <GridView
                         android:layout_width="match_parent"
@@ -132,17 +119,13 @@
                         android:keepScreenOn="false"
                         android:layout_rowWeight="1"
                         tools:listfooter="1"
-                        android:layout_height="match_parent"
-                        android:paddingBottom="10dp"
-                        android:background="@android:color/transparent" />
+                        android:layout_height="331dp" />
                 </GridLayout>
 
             </LinearLayout>
-        </RelativeLayout>
+        </ScrollView>
     </LinearLayout>
 
-<<<<<<< Updated upstream
-=======
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp">
@@ -165,6 +148,5 @@
 
     </RelativeLayout>
 
->>>>>>> Stashed changes
 
-</RelativeLayout>
+</LinearLayout>

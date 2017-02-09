@@ -9,26 +9,10 @@
 
     <include layout="@layout/menu_layout" />
 
-<<<<<<< Updated upstream
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        android:id="@+id/firstTryButton"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        app:backgroundTint="@android:color/holo_green_light" />
-=======
     <include layout="@layout/content_score" />
 
 
 
->>>>>>> Stashed changes
-
-    <include layout="@layout/content_score" />
 
 
 </android.support.design.widget.CoordinatorLayout>
