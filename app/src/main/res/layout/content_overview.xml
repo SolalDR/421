@@ -61,6 +61,10 @@
                 android:minHeight="0dp"
                 android:isScrollContainer="true">
 
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
                 <GridView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -72,8 +76,9 @@
                     android:horizontalSpacing="4dp"
                     android:verticalSpacing="4dp" />
 
-            </LinearLayout>
+                </GridLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
 
