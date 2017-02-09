@@ -67,7 +67,7 @@ public class ScoreActivity extends MenuParentActivity {
         coSquallLabel.setText(coSquallText);
         playerNameLabel.setText(this.player.getName());
 
-        FloatingActionButton firstTry = (FloatingActionButton) findViewById(R.id.firstTryButton);
+        Button firstTry = (Button) findViewById(R.id.firstTryButton);
         firstTry.setOnClickListener(firstTryListener);
 
         //Gestion de la grille

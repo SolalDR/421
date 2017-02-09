@@ -141,5 +141,30 @@
         </RelativeLayout>
     </LinearLayout>
 
+<<<<<<< Updated upstream
+=======
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+
+        <Button
+            android:text="Validez le score"
+            android:id="@+id/validScoreButton"
+            style="@style/AppTheme.buttonLightBottom" />
+
+        <Button
+
+            android:id="@+id/firstTryButton"
+            android:clickable="true"
+            style="@style/AppTheme.buttonDark"
+            android:foreground="@drawable/ic_ft_button"
+            android:foregroundTint="@color/secondLightColor"
+            android:layout_alignParentRight="true"
+            android:layout_height="50dp"
+            android:layout_width="50dp" />
+
+    </RelativeLayout>
+
+>>>>>>> Stashed changes
 
 </RelativeLayout>
