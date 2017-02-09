@@ -28,7 +28,8 @@
         android:paddingRight="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="@color/secondDarkColor">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -132,7 +133,8 @@
                         android:layout_rowWeight="1"
                         tools:listfooter="1"
                         android:layout_height="match_parent"
-                        android:paddingBottom="10dp" />
+                        android:paddingBottom="10dp"
+                        android:background="@android:color/transparent" />
                 </GridLayout>
 
             </LinearLayout>
