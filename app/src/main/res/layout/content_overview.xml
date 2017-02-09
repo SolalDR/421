@@ -13,7 +13,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/body">
+        android:id="@+id/body"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:text="Scores"
@@ -74,22 +77,28 @@
 
         </LinearLayout>
 
+        <GridView
+            android:layout_width="match_parent"
+            android:id="@+id/totalViewGrid"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/consultScore"
+            android:background="@color/firstDarkColor"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp" />
+
         <Button
             android:text="Consultez les scores"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/button"
+            android:id="@+id/consultScore"
             style="@style/AppTheme.buttonLightBottom"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="false" />
+            android:translationY="0dp"
+            android:visibility="visible" />
 
-        <GridView
-            android:layout_width="match_parent"
-            android:layout_below="@+id/nameViewGrid"
-            android:background="#CCCCCC"
-            android:id="@+id/totalViewGrid"
-            android:layout_height="20dp"
-            android:visibility="invisible" />
     </RelativeLayout>
 
 </RelativeLayout>

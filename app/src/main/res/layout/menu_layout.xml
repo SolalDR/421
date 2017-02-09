@@ -28,14 +28,15 @@
             style="@style/AppTheme.buttonNav"/>
 
         <ImageButton
-            app:srcCompat="@drawable/previous"
-            style="@style/AppTheme.buttonNav"
-            android:id="@+id/previousButtonNav" />
-
-        <ImageButton
             app:srcCompat="@drawable/play_partie"
             style="@style/AppTheme.buttonNav"
             android:id="@+id/playGameButton" />
+
+
+        <ImageButton
+            app:srcCompat="@drawable/previous"
+            style="@style/AppTheme.buttonNav"
+            android:id="@+id/previousButtonNav" />
 
         <ImageButton
             app:srcCompat="@drawable/warning"

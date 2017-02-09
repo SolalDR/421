@@ -1,5 +1,6 @@
 package com.solaldussout_revel.a421;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.solaldussout_revel.a421.object.*;
+
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -21,6 +24,7 @@ public class OverviewActivity extends MenuParentActivity {
     Player[] players;
     Score[] scores;
     Game game;
+    Button consultScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,20 @@ public class OverviewActivity extends MenuParentActivity {
         totalViewGrid.setAdapter(new ArrayAdapter<String>(this,R.layout.text_grid_overview, scoresTotal));
 
 
+        consultScore = (Button) findViewById(R.id.consultScore);
+        consultScore.setOnClickListener(consultScoreListener);
+    }
+
+    View.OnClickListener consultScoreListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.animate().translationY(dpToPx(60)).setDuration(100);
+        }
+    };
+
+    //Convertis une dimension en dp en px pour les animations
+    public static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
 }

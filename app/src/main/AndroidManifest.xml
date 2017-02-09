@@ -26,7 +26,6 @@
             android:name=".ScoreActivity"
             android:label="@string/title_activity_score"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MenuParentActivity" />
         <activity
             android:name=".OverviewActivity"
             android:label="@string/title_activity_overview"
