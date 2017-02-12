@@ -32,7 +32,6 @@ public class ScoreActivity extends MenuParentActivity {
     String tmpLibScore;
     Float tmpValueScore;
     TextView actualScoreLabel;
-    TextView playerNameLabel;
     Button validScoreButton;
     Boolean isFirstTry;
 
@@ -51,64 +50,80 @@ public class ScoreActivity extends MenuParentActivity {
         this.game = MainActivity.getGame();
         this.player = game.getActualPlayer();
         this.isFirstTry = false;
+        this.actualScoreLabel = (TextView)findViewById(R.id.actualScoreLabel);
         this.setMqrOptions();
 
-        //Get textview
+        initTextViewValues();
+        initGrid();
+
+        //Evenement de validation et de firstTry
+        Button firstTry = (Button) findViewById(R.id.firstTryButton);
+        validScoreButton = (Button) findViewById(R.id.validScoreButton);
+
+        firstTry.setOnClickListener(firstTryListener);
+        validScoreButton.setOnClickListener(validScoreListener);
+    }
+
+
+    //Affiche les informations propres au coup actuelle
+    public void initTextViewValues(){
+        //Récupération des vues
         TextView selfSquallLabel = (TextView)findViewById(R.id.selfSquallLabel);
         TextView coSquallLabel = (TextView)findViewById(R.id.coSquallLabel);
-        this.playerNameLabel = (TextView)findViewById(R.id.playerNameLabel);
-        this.actualScoreLabel = (TextView)findViewById(R.id.actualScoreLabel);
+        TextView playerNameLabel = (TextView)findViewById(R.id.playerNameLabel);
 
-        //Set textview
+        //Composition des texte
         String selfSquallText = "AB : "+this.player.getTrueSquall().toString();
         String coSquallText = "BC : "+this.game.getTrueSquall().toString();
 
+        //Attribution des valeurs
         selfSquallLabel.setText(selfSquallText);
         coSquallLabel.setText(coSquallText);
         playerNameLabel.setText(this.player.getName());
+    }
 
-        Button firstTry = (Button) findViewById(R.id.firstTryButton);
-        firstTry.setOnClickListener(firstTryListener);
 
-        //Gestion de la grille
+    //Initialisation de la grille
+    public void initGrid(){
+        //Initialisation
         String[] combinaisons = this.game.getCombinaisonsLib();
         GridView grid = (GridView)findViewById(R.id.gridViewTest);
+
+        //On créer un item par combinaison
         ArrayAdapter adapater =  new ArrayAdapter(this, R.layout.button_grid, combinaisons);
         grid.setAdapter(adapater);
+
+        //Clique sur un item de grille
         grid.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapater, View view, int position, long id) {
 
-                // Que faire quand on clique sur un élément de la liste ?
+                //On met jour la combinaison temporaire
                 Integer pos = position;
                 tmpCombin = game.getCombinaison(pos);
+
 
                 if(tmpCombin.getLib().equals("MQR")){
                     showDialog(0);
                 } else {
                     updateTmpScore();
                 }
-
-                Toast toast = Toast.makeText(getApplicationContext(), "Combinaison : " + tmpCombin.getLib()+"\nValeure de base : "+tmpCombin.getValue().toString(), Toast.LENGTH_SHORT);
-                toast.show();
-
             }
         });
-
-
-        validScoreButton = (Button) findViewById(R.id.validScoreButton);
-        validScoreButton.setOnClickListener(validScoreListener);
     }
 
 
-
-
+    //Callback d'un clique sur une combinaison, met à jour la combinaison active en attente d'une validation
     public void updateTmpScore(){
+
+        //Met à jour la combinaison active
         Float value = tmpCombin.getValue();
         String lib = tmpCombin.getLib();
         this.setTmpLibScore(lib);
         this.setTmpValueScore(value);
 
+
+        //Met à jour la valeure du coup actuelle dans la vue
         Integer intValue = value.intValue();
         if(intValue.floatValue() != value){
             this.actualScoreLabel.setText(lib+" : "+value.toString());
@@ -118,31 +133,7 @@ public class ScoreActivity extends MenuParentActivity {
     }
 
 
-    public String getTmpLibScore() {
-        return tmpLibScore;
-    }
-
-    public void setTmpLibScore(String tmpLibScore) {
-        this.tmpLibScore = tmpLibScore;
-    }
-
-    public Float getTmpValueScore() {
-        return tmpValueScore;
-    }
-
-    public void setTmpValueScore(Float tmpValueScore) {
-        this.tmpValueScore = tmpValueScore;
-    }
-
-    public TextView getActualScoreLabel() {
-        return actualScoreLabel;
-    }
-
-    public void setActualScoreLabel(TextView actualScoreLabel) {
-        this.actualScoreLabel = actualScoreLabel;
-    }
-
-
+    //Quand on crée un dialogue
     public Dialog onCreateDialog(int identifiant) {
         switch(identifiant) {
             case SPINNER_IDENTIFIANT :
@@ -162,38 +153,31 @@ public class ScoreActivity extends MenuParentActivity {
         return mSpinnerDialog;
     }
 
+
+    //Bouton de validation d'un score
     View.OnClickListener validScoreListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
             Combinaison combin = tmpCombin;
-            if(combin != null){
-                if(combin.getLib() != null && combin.getValue() != null && combin.getActiveSquall() != null){
 
-                    Float valueBase = combin.getValue();
+            //Si la combinaison est valide on rajoute un score au jeu et on passe au score suivant
+            if(combin != null && combin.getLib() != null && combin.getValue() != null && combin.getActiveSquall() != null){
+                game.addScore(combin, isFirstTry);
+                game.nextPlayer();
+                Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
+                startActivity(secondeActivite);
 
-
-                    if(combin.getLib().equals("Schlass")||(combin.getLib().equals("Nenette") && game.getNenetteBrokeSquall())){
-                        game.setCoSquall(0);
-                    } else {
-                        game.setCoSquall(game.getCoSquall()+1);
-                    }
-
-                    if(combin.getLib().equals("421") && game.getBonusFirst421()){
-                        game.setBonusFirst421(false);
-                        valueBase+=4;
-                    }
-
-                    player.addScore(combin.getLib(), valueBase, combin.getActiveSquall(), game.getCoSquall(), isFirstTry);
-                    game.nextPlayer();
-                    Intent secondeActivite = new Intent(ScoreActivity.this, ScoreActivity.class);
-                    startActivity(secondeActivite);
-                }
+            //Sinon on indique à l'utilisateur de sélectionner un score
             } else {
-                //Alert l'utilisateur qu'il doit rentrer une combin
+                Toast toast = Toast.makeText(getApplicationContext(), "Il faut sélectionner un score !", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
     };
 
+
+
+    //Bouton FirstTry
     View.OnClickListener firstTryListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -211,6 +195,8 @@ public class ScoreActivity extends MenuParentActivity {
         }
     };
 
+
+    //Définis les options de MQR
     private void setMqrOptions(){
         mqrOptions = new ArrayList<>();
         mqrOptions.add("2");
@@ -220,11 +206,21 @@ public class ScoreActivity extends MenuParentActivity {
         mqrOptions.add("6");
     }
 
+
+    //Bloque l'évenement de clique sur le bouton retour
     @Override
     public void onBackPressed() {
         Toast toast = Toast.makeText(getApplicationContext(), "Fais pas ça frère...", Toast.LENGTH_SHORT);
         toast.show();
-
     }
+
+    public void setTmpLibScore(String tmpLibScore) {
+        this.tmpLibScore = tmpLibScore;
+    }
+
+    public void setTmpValueScore(Float tmpValueScore) {
+        this.tmpValueScore = tmpValueScore;
+    }
+
 
 }

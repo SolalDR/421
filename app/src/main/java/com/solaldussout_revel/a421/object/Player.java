@@ -1,9 +1,6 @@
 package com.solaldussout_revel.a421.object;
 
 
-/**
- * Created by Solal on 30/01/2017.
- */
 
 public class Player {
     private String name;
@@ -33,15 +30,15 @@ public class Player {
         return scores;
     }
 
-    public void setScores(Score[] scores) {
+    private void setScores(Score[] scores) {
         this.scores = scores;
     }
 
-    public Integer getSelfSquall() {
+    private Integer getSelfSquall() {
         return selfSquall;
     }
 
-    public void setSelfSquall(Integer selfSquall) {
+    private void setSelfSquall(Integer selfSquall) {
         this.selfSquall = selfSquall;
     }
 
@@ -87,7 +84,6 @@ public class Player {
         } else {
             newScores = new Score[preScores.length+1];
         }
-
 
         Integer selfSquall = this.manageSelfSquall(lib);
         Score newScore = new Score(lib, valueBase, selfSquall, coSquall, activeSquall, firsttry);

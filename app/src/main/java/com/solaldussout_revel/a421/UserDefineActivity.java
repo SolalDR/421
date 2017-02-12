@@ -1,26 +1,18 @@
 package com.solaldussout_revel.a421;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
 import com.solaldussout_revel.a421.object.Game;
-import com.solaldussout_revel.a421.object.Player;
 
 public class UserDefineActivity extends AppCompatActivity {
     Game game;
     Button saveUserButton;
     EditText[] users = new EditText[5];
-    TextView debug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +39,10 @@ public class UserDefineActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Integer p = 0;
-            Player testplayer=null;
 
-            for(int i=0; i<users.length; i++){
-                if(!users[i].getText().toString().isEmpty()){
-                    testplayer = game.addPlayer(users[i].getText().toString());
+            for (EditText textEdit: users) {
+                if(!textEdit.getText().toString().isEmpty()){
+                    game.addPlayer(textEdit.getText().toString());
                     p++;
                 }
             }
@@ -71,14 +62,6 @@ public class UserDefineActivity extends AppCompatActivity {
             startActivity(prefActivity);
         }
     };
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
 
 
 }

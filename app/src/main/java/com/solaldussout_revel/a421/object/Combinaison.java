@@ -11,11 +11,21 @@ public class Combinaison {
     String lib=null;
     Float value=null;
     Boolean activeSquall=null;
+    Boolean breakSquall=null;
 
-    public Combinaison(String libTmp, Float valueTmp, Boolean activeSquallTmp){
+    public Combinaison(String libTmp, Float valueTmp, Boolean activeSquallTmp, Boolean breakSquall){
         this.setActiveSquall(activeSquallTmp);
         this.setValue(valueTmp);
         this.setLib(libTmp);
+        this.setBreakSquall(breakSquall);
+    }
+
+    public Boolean getBreakSquall() {
+        return breakSquall;
+    }
+
+    public void setBreakSquall(Boolean breakSquall) {
+        this.breakSquall = breakSquall;
     }
 
     public String getLib() {

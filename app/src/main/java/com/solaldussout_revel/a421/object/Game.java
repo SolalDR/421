@@ -131,20 +131,21 @@ public class Game {
     public void setCombinaisons(){
 
         this.combinaisons = new Combinaison[]{
-                new Combinaison("421", (float) 9, true),
-                new Combinaison("Schlass", (float) 0, false),
-                new Combinaison("111", (float) 6, true),
-                new Combinaison("Iniakin", (float) 6, true),
-                new Combinaison("Sphinx", (float) 5, true),
-                new Combinaison("Eddy Malou", (float) 1.5, true),
-                new Combinaison("Koala", (float)-1, false),
-                new Combinaison("Nenette", nenetteValue, false),
-                new Combinaison("KT1", (float) 1, false),
-                new Combinaison("MQR", (float) 6, true),
-                new Combinaison("Guinguette", (float) 6, true),
-                new Combinaison("Colombette", (float) 4, true),
-                new Combinaison("Punk", (float) 3, true),
-                new Combinaison("Molotov", (float) 6, true)
+                // Nom combinaison, valeure par défault, incrémente les bourrasque, casse les bourrasque
+                new Combinaison("421", (float) 9, true, false),
+                new Combinaison("Schlass", (float) 0, false, true),
+                new Combinaison("111", (float) 6, true, false),
+                new Combinaison("Iniakin", (float) 6, true, false),
+                new Combinaison("Sphinx", (float) 5, true, false),
+                new Combinaison("Eddy Malou", (float) 1.5, true, false),
+                new Combinaison("Koala", (float)-1, false, false),
+                new Combinaison("Nenette", nenetteValue, false, nenetteBrokeSquall),
+                new Combinaison("KT1", (float) 1, false, false),
+                new Combinaison("MQR", (float) 6, true, false),
+                new Combinaison("Guinguette", (float) 6, true, false),
+                new Combinaison("Colombette", (float) 4, true, false),
+                new Combinaison("Punk", (float) 3, true, false),
+                new Combinaison("Molotov", (float) 6, true, false)
         };
 
         this.combinaisonsLib = new String[this.combinaisons.length];
@@ -177,6 +178,26 @@ public class Game {
     }
 
     //Functions
+
+
+    public void addScore(Combinaison combin, Boolean isFirstTry){
+        coSquall = this.getCoSquall();
+        Player player = this.getActualPlayer();
+        Float valueBase = combin.getValue();
+
+        if(combin.getBreakSquall()){
+            this.setCoSquall(0);
+        } else {
+            this.setCoSquall(this.getCoSquall()+1);
+        }
+
+        if(combin.getLib().equals("421") && this.getBonusFirst421()){
+            this.setBonusFirst421(false);
+            valueBase+=4;
+        }
+
+        player.addScore(combin.getLib(), valueBase, combin.getActiveSquall(), this.getCoSquall(), isFirstTry);
+    }
 
     public Player addPlayer(String name){
         Player[] players = this.getPlayers();
@@ -235,17 +256,13 @@ public class Game {
                     setCurrentTour(getCurrentTour()-1);
                 }
             }
-
             Player p = players[next];
             Score last = p.getLastScore();
             if(last != null){
-                if(last.getActiveSquall()){
-                    setCoSquall(getCoSquall()-1);
+                if(last.getActiveSquall()) {
+                    setCoSquall(getCoSquall() - 1);
                 }
-
                 p.deleteLastScore();
-
-
                 setCurrentPlayer(next);
             }
         }
