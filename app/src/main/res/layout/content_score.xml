@@ -150,16 +150,17 @@
             android:id="@+id/validScoreButton"
             style="@style/AppTheme.buttonLightBottom" />
 
-        <Button
+        <ImageButton
 
             android:id="@+id/firstTryButton"
             android:clickable="true"
             style="@style/AppTheme.buttonDark"
-            android:foreground="@drawable/ic_ft_button"
-            android:foregroundTint="@color/secondLightColor"
             android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_shamrock"
+
             android:layout_height="50dp"
-            android:layout_width="50dp" />
+            android:layout_width="50dp"
+            android:elevation="2dp"/>
 
     </RelativeLayout>
 

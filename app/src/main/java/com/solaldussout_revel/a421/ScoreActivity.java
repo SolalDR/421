@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.app.Dialog;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class ScoreActivity extends MenuParentActivity {
         initGrid();
 
         //Evenement de validation et de firstTry
-        Button firstTry = (Button) findViewById(R.id.firstTryButton);
+        ImageButton firstTry = (ImageButton) findViewById(R.id.firstTryButton);
         validScoreButton = (Button) findViewById(R.id.validScoreButton);
 
         firstTry.setOnClickListener(firstTryListener);
@@ -72,7 +73,7 @@ public class ScoreActivity extends MenuParentActivity {
         TextView coSquallLabel = (TextView)findViewById(R.id.coSquallLabel);
         TextView playerNameLabel = (TextView)findViewById(R.id.playerNameLabel);
 
-        //Composition des texte
+        //Composition des textes
         String selfSquallText = "AB : "+this.player.getTrueSquall().toString();
         String coSquallText = "BC : "+this.game.getTrueSquall().toString();
 
