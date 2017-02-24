@@ -12,7 +12,7 @@ import com.solaldussout_revel.a421.object.Game;
 public class UserDefineActivity extends AppCompatActivity {
     Game game;
     Button saveUserButton;
-    EditText[] users = new EditText[5];
+    EditText[] users = new EditText[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class UserDefineActivity extends AppCompatActivity {
         users[2] = (EditText) findViewById(R.id.userDefineField3);
         users[3] = (EditText) findViewById(R.id.userDefineField4);
         users[4] = (EditText) findViewById(R.id.userDefineField5);
+        users[5] = (EditText) findViewById(R.id.userDefineField6);
 
         saveUserButton = (Button)findViewById(R.id.buttonSaveUsers);
         saveUserButton.setOnClickListener(saveUserListener);
